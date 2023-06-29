@@ -17,7 +17,8 @@ let featureTarget = Target.createWithoutResource(
         .coreProject,
         .uiProject
     ],
-    settings: nil
+    settings: nil,
+    coreDataModels: [CoreDataModel(coreDataPath)]
 )
 
 let project = Project.create(

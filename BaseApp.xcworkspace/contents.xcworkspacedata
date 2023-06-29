@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:BaseData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:BaseData+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:BaseData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:BaseData+CoreDataProperties.swift">
+   </FileRef>
+   <Group
+      location = "group:BaseApp"
+      name = "BaseApp">
+      <FileRef
+         location = "group:Core/Core.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Feature/Feature.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Logger/Logger.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:MainApp/MainApp.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:UI/UI.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>

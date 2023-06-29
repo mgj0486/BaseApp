@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Core
+import Feature
 
 struct ContentView: View {
     var logger: any NSLoggerProtocol {
@@ -15,10 +16,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        Text("Hello, World!")
-            .onAppear {
-                
-            }
+        TempView()
     }
 }
 

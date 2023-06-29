@@ -13,7 +13,7 @@ public class PersistenceManager {
     public static let shared = PersistenceManager()
     
     lazy var container: NSPersistentCloudKitContainer = {
-        let container = NSPersistentCloudKitContainer(name: "AnnualDiary")
+        let container = NSPersistentCloudKitContainer(name: "CoreModel")
         
         guard let storeDescription = container.persistentStoreDescriptions.first else {
             fatalError("###\(#function): Failed to retrieve a persistent store description.")
@@ -101,7 +101,7 @@ public class PersistenceManager {
         }
     }
     
-    @discardableResult func removeAllEntityData(entityName: String) -> Bool {
+    @discardableResult public func removeAllEntityData(entityName: String) -> Bool {
         let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
         do {
@@ -111,72 +111,7 @@ public class PersistenceManager {
         catch { return false }
     }
     
-//    //MARK: -Diary
-//    func setDiary(item: DiaryViewModel.Item) {
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Diary")
-//        fetchRequest.predicate = NSPredicate(format: "datestring == %@", item.datestring as CVarArg)
-//        do {
-//            if let result = try self.container.viewContext.fetch(fetchRequest) as? [Diary] {
-//                if result.isEmpty {
-//                    let entity = NSEntityDescription.entity(forEntityName: "Diary", in: self.container.viewContext)
-//                    if let entity = entity {
-//                        let info = NSManagedObject(entity: entity, insertInto: self.container.viewContext)
-//                        info.setValue(item.datestring, forKey: "datestring")
-//                        info.setValue(item.mood, forKey: "mood")
-//                        info.setValue(item.saveddate ?? Date(), forKey: "saveddate")
-//                        info.setValue(item.text, forKey: "text")
-//                        info.setValue(item.weather, forKey: "weather")
-//                    }
-//                } else {
-//                    let info = result.first
-//                    info?.mood = item.mood
-//                    info?.saveddate = item.saveddate
-//                    info?.text = item.text
-//                    info?.weather = item.weather
-//                }
-//                save()
-//            }
-//        } catch {
-//            print(error)
-//        }
-//    }
-//
-//    func deleteDiary(dateString: String) {
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Diary")
-//        fetchRequest.predicate = NSPredicate(format: "datestring == %@", dateString as CVarArg)
-//        do {
-//            if let result = try self.container.viewContext.fetch(fetchRequest) as? [Diary] {
-//                for object in result {
-//                    self.container.viewContext.delete(object)
-//                }
-//                save()
-//            }
-//        } catch {
-//            print(error)
-//        }
-//    }
-//
-//    func saveImageData(dateString: String, data: Data, index: Int) {
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Userimg")
-//        fetchRequest.predicate = NSPredicate(format: "datestring == %@ AND name == %@", dateString as CVarArg, "\(dateString)_\(index)" as CVarArg)
-//        do {
-//            if let result = try self.container.viewContext.fetch(fetchRequest) as? [Userimg] {
-//                if result.isEmpty {
-//                    let entity = NSEntityDescription.entity(forEntityName: "Userimg", in: self.container.viewContext)
-//                    if let entity = entity {
-//                        let info = NSManagedObject(entity: entity, insertInto: self.container.viewContext)
-//                        info.setValue(dateString, forKey: "datestring")
-//                        info.setValue(data, forKey: "data")
-//                        info.setValue("\(dateString)_\(index)", forKey: "name")
-//                    }
-//                } else {
-//                    let info = result.first
-//                    info?.data = data
-//                }
-//                save()
-//            }
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-//    }
+    public func getContainer() -> NSPersistentCloudKitContainer {
+        return container
+    }
 }

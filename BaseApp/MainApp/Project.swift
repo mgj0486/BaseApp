@@ -13,7 +13,8 @@ private let mainTarget = Target.create(
     scripts: [],
     dependencies: dependencies,
     settings: .settings(configurations: [.debug(name: .debug),
-                                         .release(name: .release)])
+                                         .release(name: .release)]),
+    coreDataModels: [CoreDataModel(coreDataPath)]
 )
 
 

@@ -6,6 +6,7 @@ import ProjectDescription
 /// See https://docs.tuist.io/guides/helpers/
 
 public let mainProjectName = "MainApp"
+public let coreDataPath: Path = "../../CoreModel.xcdatamodeld"
 
 public let infoPlist: [String: InfoPlist.Value] = [
     "CFBundleDisplayName": "BaseApp",
@@ -49,7 +50,8 @@ extension Target {
         infoPlist: [String: InfoPlist.Value],
         scripts: [TargetScript],
         dependencies: [TargetDependency],
-        settings: Settings?
+        settings: Settings?,
+        coreDataModels: [CoreDataModel] = []
     ) -> Target {
         Target(
             name: targetName,
@@ -64,7 +66,8 @@ extension Target {
             entitlements: nil,
             scripts: scripts,
             dependencies: dependencies,
-            settings: settings
+            settings: settings,
+            coreDataModels: coreDataModels
         )
     }
     
@@ -74,7 +77,8 @@ extension Target {
         infoPlist: [String: InfoPlist.Value],
         scripts: [TargetScript],
         dependencies: [TargetDependency],
-        settings: Settings?
+        settings: Settings?,
+        coreDataModels: [ProjectDescription.CoreDataModel] = []
     ) -> Target {
         Target(
             name: targetName,
@@ -88,7 +92,8 @@ extension Target {
             entitlements: nil,
             scripts: scripts,
             dependencies: dependencies,
-            settings: settings
+            settings: settings,
+            coreDataModels: coreDataModels
         )
     }
 }

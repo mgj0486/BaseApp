@@ -14,7 +14,7 @@ public struct CoreDataFetchResultsPublisher<Entity>: Publisher where Entity: NSM
     private let request: NSFetchRequest<Entity>
     private let context: NSManagedObjectContext
     
-    init(request: NSFetchRequest<Entity>, context: NSManagedObjectContext) {
+    public init(request: NSFetchRequest<Entity>, context: NSManagedObjectContext) {
         self.request = request
         self.context = context
     }
